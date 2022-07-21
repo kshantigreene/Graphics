@@ -4,13 +4,34 @@
 		<meta charset="utf-8">
 		<title>My first three.js app</title>
 		<style>
-			body { margin: 0; }
+			body { 
+				margin: 0;
+				background-color: aliceblue; 
+			}
+			#three{
+
+				padding:50px;
+			}	
+			#remaining{
+				display:block;
+				margin-left:auto;
+				margin-right:auto;
+				width:150px;
+
+			}
+			#shape{
+				display:block;
+				margin-left:auto;
+				margin-right:auto;
+				width:100;
+			}
 		</style>
 	</head>
 	<body>
 		<script type="module" src="js/graphics.js"></script>
-		<script>
-			// Our Javascript will go here.
-		</script>
+		<div id="three"></div>
+		<div id="remaining">
+			<button id="shape">Switch shape</button>
+		</div>
 	</body>
 </html>
