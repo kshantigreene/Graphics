@@ -40,6 +40,7 @@ function switchShape(){
 
 /** rotates the current object */
 function animate() {
+	//causes animate to be called again.
 	requestAnimationFrame( animate );
 	object.rotation.x += 0.01;
 	object.rotation.y += 0.01;
@@ -47,9 +48,11 @@ function animate() {
 }
 /**draws a cube */
 function drawCube(){
-	//First make geometry, then material, then finally a shape from geometry and material
+	//First make geometry, then material, 
+	//then finally a shape from geometry and material
 	geometry = new THREE.BoxGeometry( 1, 1, 1 );
-	let material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+	let material = new THREE.MeshBasicMaterial({color: 0xff0000});
+	
 	cube = new THREE.Mesh( geometry, material );
 }
 
@@ -80,10 +83,8 @@ function drawParticleSphere(){
 		}
 	}
 	let pointsGeom = new THREE.BufferGeometry();
-	pointsGeom.setAttribute("position",
-	new THREE.BufferAttribute(pointsBuffer,3));
-	pointsGeom.setAttribute("color",
-	new THREE.BufferAttribute(colorBuffer,3));
+	pointsGeom.setAttribute("position", new THREE.BufferAttribute(pointsBuffer,3));
+	pointsGeom.setAttribute("color", new THREE.BufferAttribute(colorBuffer,3));
 	geometry.setAttribute( "position", vertexAttrib );
 	//create material for points.
 	let pointsMat = new THREE.PointsMaterial( {
@@ -101,5 +102,10 @@ function drawParticleSphere(){
 drawCube();
 drawParticleSphere();
 object=cube;
-scene.add(cube);
+scene.add(object);
+//set light to some color
+let light= new THREE.DirectionalLight(0xff0000,1.0); 
+light.position.set(-2,2,0);
+scene.add(light);
+
 animate();
