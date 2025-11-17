@@ -37,7 +37,7 @@ function drawCube(){
 	//First make geometry, then material, 
 	//then finally a shape from geometry and material
 	geometry = new THREE.BoxGeometry( 1, 1, 1 );
-	let material = new THREE.MeshLambertMaterial({color: 0xff0000});
+	let material = new THREE.MeshBasicMaterial({color: 0xff0000});
 	
 	cube = new THREE.Mesh( geometry, material );
 }
@@ -106,7 +106,7 @@ drawParticleSphere();
 object=cube;
 scene.add(object);
 //set light to some color
-let light= new THREE.DirectionalLight(0xff0000,1.0); 
+let light= new THREE.DirectionalLight(0xffffff,1.0); 
 light.position.set(-2,2,0);
 scene.add(light);
 
