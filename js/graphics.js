@@ -5,20 +5,6 @@ var object;
 var cube;
 var sphereOfPoints;
 
-//Set up the scene
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-camera.position.z = 5;
-const renderer = new THREE.WebGLRenderer();
-
-//set up the renderer
-var location=document.getElementById("three");
-renderer.setSize(window.innerWidth-100,window.innerHeight-100);
-location.appendChild( renderer.domElement );
-
-//set button to change shapes
-var button=document.getElementById("shape");
-button.onclick=switchShape;
 
 /* 
 Switches shape from cube to sphere of points or vice versa
@@ -51,7 +37,7 @@ function drawCube(){
 	//First make geometry, then material, 
 	//then finally a shape from geometry and material
 	geometry = new THREE.BoxGeometry( 1, 1, 1 );
-	let material = new THREE.MeshBasicMaterial({color: 0xff0000});
+	let material = new THREE.MeshLambertMaterial({color: 0xff0000});
 	
 	cube = new THREE.Mesh( geometry, material );
 }
@@ -97,6 +83,22 @@ function drawParticleSphere(){
 	sphereOfPoints = new THREE.Points( pointsGeom, pointsMat );
 	
 }
+
+//Set up the scene
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+camera.position.z = 5;
+const renderer = new THREE.WebGLRenderer();
+
+//set up the renderer
+var location=document.getElementById("three");
+renderer.setSize(window.innerWidth-100,window.innerHeight-100);
+location.appendChild( renderer.domElement );
+
+//set button to change shapes
+var button=document.getElementById("shape");
+button.onclick=switchShape;
+
 
 //Render the shapes and then select the first shape. Start animation.
 drawCube();
